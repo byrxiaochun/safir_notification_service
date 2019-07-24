@@ -53,7 +53,8 @@ class OpenstackConnector:
         # are added to openstackclient
         self.aodh_conn = aodh_client.Client(
             session=cloud.get_session_client('alarming'))
-
+        self.aodh_conn.alarm.url = '/alarms'
+        
     def get_compute_server(self, instance_id):
         try:
             server = self.conn.compute.find_server(instance_id)
